@@ -19,3 +19,5 @@ Storage functions:
     store: Operation that will request the database to store a new product in its tables.
 
     drop: Operation that will request the database to drop a new product from its tables.
+
+    search: Operation that will request the database to find a product in its tables.
