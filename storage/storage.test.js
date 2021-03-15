@@ -1,12 +1,19 @@
 const storage = require("./storage");
 
+beforeAll(() => {
+    mockStorage = new storage.storage({"store": (product,quantity,price) => {
+                                           if(product == "sailboats")
+                                               throw new Error();
+                                       },
+                                       "drop": (product) => {
+                                           if(product == "flower pots")
+                                               throw new Error();
+                                       }
+                                      });
+});
+
 test("Checks whether the storage is calling the database store method " +
 "correctly, throwing the correct errors when needed.", () => {
-    let database = {"store": (product,quantity,price) => {
-                                 if(product == "sailboats")
-                                     throw new Error();
-                             }};
-    let mockStorage = new storage.storage(database);
     expect(() => mockStorage.store(69,38,68)).toThrow(TypeError);
     expect(() => mockStorage.store("peaches",-1,38)).toThrow(TypeError);
     expect(() => mockStorage.store("rings",84,undefined)).toThrow(TypeError);
@@ -17,13 +24,8 @@ test("Checks whether the storage is calling the database store method " +
 
 test("Checks whether the storage is calling the database drop method " +
 "correctly, throwing the correct errors when needed.", () => {
-    let database = {"drop": (product) => {
-                                 if(product == "flower pots")
-                                     throw new Error();
-                             }};
-    let mockStorage = new storage.storage(database);
     expect(() => mockStorage.drop(undefined)).toThrow(TypeError);
-    expect(() => mockStorage.store("flower pots")
+    expect(() => mockStorage.drop("flower pots")
     ).toThrow(storage.DatabaseDropingError);
-    expect(mockStorage.store("leaf blowers")).toBe(undefined);
+    expect(mockStorage.drop("leaf blowers")).toBe(undefined);
 });
