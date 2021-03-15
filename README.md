@@ -16,6 +16,4 @@ Storage class:
 
 Storage functions:
 
-    setDatabase: Sets the database class that will implement the standard interface for the database and adapt its functionality to call the necessary database functions.
-
     store: Operation that will request the database to store a new product in its tables.
