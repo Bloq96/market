@@ -9,9 +9,13 @@ class mockDatabase {
                      "skateboards": {"quantity": 28, "price": 87}};
     }
     drop(product) {
-        if(product!=undefined && typeof product == "string" && product in this.data) {
-            delete this.data[product];                   
+        //Mock error:
+        if(product == "flower pots") {
+            throw new Error();
         }
+        if(product in this.data) {
+            delete this.data[product];                   
+        } 
     }
     print() {
         console.log(this.data);
@@ -27,9 +31,14 @@ class mockDatabase {
         return found;
     }
     store(product,quantity,price) {
-        let content = {"quantity": quantity,
-                       "price": price}
-        this.data[product] = content;
+        if(!(product in this.data)) {
+            let content = {"quantity": quantity,
+                           "price": price}
+            this.data[product] = content;
+        } else {
+            throw new Error("Product already stored.",
+            "/storage/mockDatabase.js",1);
+        }
     }
 }
 
