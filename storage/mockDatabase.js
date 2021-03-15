@@ -45,8 +45,14 @@ class mockDatabase {
 
 module.exports = new mockDatabase();
 
-/*myDB = new mockDatabase();
-/*myDB.store(69,38,68);
+/*function printResult(database,functionToCall,arg) {
+    console.log(arg,functionToCall(database,arg));
+}
+
+myDB = new mockDatabase();
+printResult(myDB,(database,arg) => database.search(arg),"boa");
+
+myDB.store(69,38,68);
 myDB.store("sailboats",88,70);
 myDB.store("peaches","s",38);
 myDB.store("rings",84,"a");
