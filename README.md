@@ -17,3 +17,5 @@ Storage class:
 Storage functions:
 
     store: Operation that will request the database to store a new product in its tables.
+
+    drop: Operation that will request the database to drop a new product from its tables.
