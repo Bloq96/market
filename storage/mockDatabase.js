@@ -27,19 +27,9 @@ class mockDatabase {
         return found;
     }
     store(product,quantity,price) {
-        if(product!=undefined && typeof product == "string" && !(product in
-        this.data)) {
-            let content = {};
-            if(product!=undefined && typeof quantity == "number")
-                content.quantity = quantity;
-            else
-                content.quantity = 0;
-            if(product!=undefined && typeof price == "number")
-                content.price = price;
-            else
-                content.price = 100;
-            this.data[product] = content;
-        }
+        let content = {"quantity": quantity,
+                       "price": price}
+        this.data[product] = content;
     }
 }
 
