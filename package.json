@@ -4,7 +4,8 @@
     "description": "Simple sales and inventory management system in a marketing environment",
     "main": "",
     "scripts": {
-        "start": ""
+        "start": "test",
+        "test": "jest"
     },
     "repository": {
         "type": "git",
@@ -16,5 +17,7 @@
         "url": "https://github.com/Bloq96/market/issues"
     },
     "homepage": "https://github.com/Bloq96/market#readme",
-    "dependencies": {}
+    "devDependencies": {
+        "jest": "^26.6.3"
+    }
 }
