@@ -1,15 +1,9 @@
 const storage = require("./storage");
 
+const mockDatabase = require("./mockDatabase");
+
 beforeAll(() => {
-    mockStorage = new storage.storage({"store": (product,quantity,price) => {
-                                           if(product == "sailboats")
-                                               throw new Error();
-                                       },
-                                       "drop": (product) => {
-                                           if(product == "flower pots")
-                                               throw new Error();
-                                       }
-                                      });
+    mockStorage = new storage.storage(mockDatabase);
 });
 
 test("Checks whether the storage is calling the database store method " +
@@ -23,6 +17,14 @@ test("Checks whether the storage is calling the database store method " +
 });
 
 test("Checks whether the storage is calling the database drop method " +
+"correctly, throwing the correct errors when needed.", () => {
+    expect(() => mockStorage.drop(undefined)).toThrow(TypeError);
+    expect(() => mockStorage.drop("flower pots")
+    ).toThrow(storage.DatabaseDropingError);
+    expect(mockStorage.drop("leaf blowers")).toBe(undefined);
+});
+
+test("Checks whether the storage is calling the database search method " +
 "correctly, throwing the correct errors when needed.", () => {
     expect(() => mockStorage.drop(undefined)).toThrow(TypeError);
     expect(() => mockStorage.drop("flower pots")

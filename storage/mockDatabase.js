@@ -13,6 +13,7 @@ class mockDatabase {
         if(product == "flower pots") {
             throw new Error();
         }
+
         if(product in this.data) {
             delete this.data[product];                   
         } 
@@ -21,13 +22,16 @@ class mockDatabase {
         console.log(this.data);
     }
     search(reference) {
-        let found = {};
-        if(reference!=undefined && typeof reference == "string") {
-            let internalRegex = new RegExp(reference,"i");
-            for(let product in this.data)
-                if(internalRegex.test(product))
-                    found[product] = this.data[product];
+        //Mock error:
+        if(reference == "anything") {
+            throw new Error();
         }
+
+        let found = {};
+        let internalRegex = new RegExp(reference,"i");
+        for(let product in this.data)
+            if(internalRegex.test(product))
+                found[product] = this.data[product];
         return found;
     }
     store(product,quantity,price) {
