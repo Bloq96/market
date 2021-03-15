@@ -44,6 +44,36 @@ class mockDatabase {
             "/storage/mockDatabase.js",1);
         }
     }
+    update(product,quantity,price) {
+        if(product in this.data) {
+            let content = {"quantity": quantity,
+                           "price": price}
+            this.data[product] = content;
+        } else {
+            throw new Error("Product is not in the database.",
+            "/storage/mockDatabase.js",1);
+        }
+    }
+    updateQuantity(product,quantity) {
+        if(product in this.data) {
+            let content = {"quantity": quantity,
+                           "price": this.data[product].price}
+            this.data[product] = content;
+        } else {
+            throw new Error("Product is not in the database.",
+            "/storage/mockDatabase.js",1);
+        }
+    }
+    updatePrice(product,price) {
+        if(product in this.data) {
+            let content = {"quantity": this.data[product].quantity,
+                           "price": price}
+            this.data[product] = content;
+        } else {
+            throw new Error("Product is not in the database.",
+            "/storage/mockDatabase.js",1);
+        }
+    }
 }
 
 module.exports = new mockDatabase();
