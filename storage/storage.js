@@ -24,7 +24,7 @@ class storage {
     search(reference) {
         if(reference!=undefined && typeof reference == "string") {
             try {
-                this.database.search(reference);
+                return this.database.search(reference);
             } catch(error) {
                 throw new DatabaseSearchingError("Failed to search data in " +
                 "the database due to: "+error.name+": "+error.message,

@@ -29,7 +29,7 @@ test("Checks whether the storage is calling the database search method " +
     expect(() => mockStorage.search(0.5)).toThrow(TypeError);
     expect(() => mockStorage.search("anything")
     ).toThrow(storage.DatabaseSearchingError);
-    expect(mockStorage.search("boa")).toBe({
+    expect(mockStorage.search("boa")).toEqual({
     "sailboats": {"quantity": 16, "price": 22},
     "skateboards": {"quantity": 28, "price": 87}});
 });
