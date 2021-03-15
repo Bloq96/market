@@ -10,7 +10,7 @@ class storage {
     }
 }
 
-storage.drop = function(product) {
+storage.prototype.drop = function(product) {
     if(product!=undefined && typeof product == "string") {
         try {
             this.database.drop(product);
@@ -23,9 +23,9 @@ storage.drop = function(product) {
         throw new TypeError("The product name must be a string.",
         "/storage/storage.js")
     }
-}
+};
 
-storage.search = function(reference) {
+storage.prototype.search = function(reference) {
     if(reference!=undefined && typeof reference == "string") {
         try {
             return this.database.search(reference);
@@ -38,9 +38,9 @@ storage.search = function(reference) {
         throw new TypeError("The reference must be a string.",
         "/storage/storage.js");
     }
-}
+};
 
-storage.store = function(product,quantity,price) {
+storage.prototype.store = function(product,quantity,price) {
     if(product!=undefined && typeof product == "string") {
         if(quantity!=undefined && typeof quantity == "number" &&
         quantity >= 0) {
@@ -66,9 +66,9 @@ storage.store = function(product,quantity,price) {
         throw new TypeError("The product name must be a string.",
         "/storage/storage.js");
     }
-}
+};
 
-storage.update = function(product,quantity,price) {
+storage.prototype.update = function(product,quantity,price) {
     if(product!=undefined && typeof product == "string") {
         if(quantity!=undefined && typeof quantity == "number" &&
         quantity >= 0) {
@@ -109,11 +109,11 @@ storage.update = function(product,quantity,price) {
         throw new TypeError("The product name must be a string.",
         "/storage/storage.js");
     }
-}
+};
 
 module.exports = {"storage":storage,
                   "DatabaseError": DatabaseError,
                   "DatabaseDropingError": DatabaseDropingError,
                   "DatabaseSearchingError": DatabaseSearchingError,
                   "DatabaseStoringError": DatabaseStoringError,
-                  "DatabaseStoringError": DatabaseUpdatingError}
+                  "DatabaseStoringError": DatabaseUpdatingError};
