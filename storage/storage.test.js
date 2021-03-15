@@ -26,7 +26,7 @@ test("Checks whether the storage is calling the database drop method " +
 
 test("Checks whether the storage is calling the database search method " +
 "correctly, throwing the correct errors when needed.", () => {
-    expect(() => mockStorage.search(cart)).toThrow(TypeError);
+    expect(() => mockStorage.search(0.5)).toThrow(TypeError);
     expect(() => mockStorage.search("anything")
     ).toThrow(storage.DatabaseSearchingError);
     expect(mockStorage.search("boa")).toBe({
