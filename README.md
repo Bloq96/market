@@ -21,3 +21,5 @@ Storage functions:
     drop: Operation that will request the database to drop a new product from its tables.
 
     search: Operation that will request the database to find a product in its tables.
+
+    update: Operation that will attempt to update the data in the database. It can call different functions depending on what will be updated.
