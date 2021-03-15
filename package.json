@@ -1,0 +1,20 @@
+{
+    "name": "market_sales_and_storage",
+    "version": "1.0.0",
+    "description": "Simple sales and inventory management system in a marketing environment",
+    "main": "",
+    "scripts": {
+        "start": ""
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Bloq96/market.git"
+    },
+    "author": "Bloq96",
+    "license": "",
+    "bugs": {
+        "url": "https://github.com/Bloq96/market/issues"
+    },
+    "homepage": "https://github.com/Bloq96/market#readme",
+    "dependencies": {}
+}
