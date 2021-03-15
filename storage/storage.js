@@ -1,6 +1,7 @@
 class DatabaseError extends Error {};
 class DatabaseStoringError extends Error {};
 class DatabaseDropingError extends Error {};
+class DatabaseSearchingError extends Error {};
 
 class storage {
     constructor(database) {
@@ -18,6 +19,20 @@ class storage {
         } else {
             throw new TypeError("The product name must be a string.",
             "/storage/storage.js")
+        }
+    }
+    search(reference) {
+        if(reference!=undefined && typeof reference == "string") {
+            try {
+                this.database.search(reference);
+            } catch(error) {
+                throw new DatabaseSearchingError("Failed to search data in " +
+                "the database due to: "+error.name+": "+error.message,
+                "/storage/storage.js");
+            }
+        } else {
+            throw new TypeError("The reference must be a string.",
+            "/storage/storage.js");
         }
     }
     store(product,quantity,price) {
@@ -51,5 +66,6 @@ class storage {
 
 module.exports = {"storage":storage,
                   "DatabaseError": DatabaseError,
-                  "DatabaseStoringError": DatabaseStoringError,
-                  "DatabaseDropingError": DatabaseDropingError}
+                  "DatabaseDropingError": DatabaseDropingError,
+                  "DatabaseSearchingError": DatabaseSearchingError,
+                  "DatabaseStoringError": DatabaseStoringError}
