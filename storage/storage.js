@@ -1,4 +1,4 @@
-class DatabaseError extends Error();
+class DatabaseError extends Error() {};
 
 class storage {
     constructor(database) {
