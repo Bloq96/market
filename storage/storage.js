@@ -116,4 +116,4 @@ module.exports = {"storage":storage,
                   "DatabaseDropingError": DatabaseDropingError,
                   "DatabaseSearchingError": DatabaseSearchingError,
                   "DatabaseStoringError": DatabaseStoringError,
-                  "DatabaseStoringError": DatabaseUpdatingError};
+                  "DatabaseUpdatingError": DatabaseUpdatingError};
