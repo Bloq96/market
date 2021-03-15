@@ -33,4 +33,5 @@ class storage {
     }
 }
 
-module.exports = storage;
+module.exports = {"storage":storage,
+                  "DatabaseError": DatabaseError}
