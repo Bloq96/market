@@ -22,8 +22,8 @@ test("Checks whether the storage is calling the database drop method " +
                                      throw new Error();
                              }};
     let mockStorage = new storage.storage(database);
-    expect(() => mockStorage.drop(undefined).toThrow(TypeError);
+    expect(() => mockStorage.drop(undefined)).toThrow(TypeError);
     expect(() => mockStorage.store("flower pots")
     ).toThrow(storage.DatabaseDropingError);
-    expect(() => mockStorage.store("leaf blowers").toBe(undefined);
+    expect(mockStorage.store("leaf blowers")).toBe(undefined);
 });
