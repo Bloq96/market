@@ -4,7 +4,7 @@
     "description": "Simple sales and inventory management system in a marketing environment",
     "main": "",
     "scripts": {
-        "start": "npm run generate-mocks & npm run test",
+        "start": "npm run generate-mocks",
         "test": "jest",
         "generate-mocks": "node storage/mockDatabase.js"
     },
