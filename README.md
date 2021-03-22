@@ -23,3 +23,13 @@ Storage functions:
     search: Operation that will request the database to find a product in its tables.
 
     update: Operation that will attempt to update the data in the database. It can call different functions depending on what will be updated.
+
+Cart Factory class:
+    Implements a factory for creating carts.
+
+Cart class:
+    Temporary structure that stores the name of a customer, the items he/she wants and the total cost of those items.
+
+Sales functions:
+
+    create: Function from the cart factory that must return a valid empty cart.
