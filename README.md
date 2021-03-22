@@ -33,3 +33,7 @@ Cart class:
 Sales functions:
 
     create: Function from the cart factory that must return a valid empty cart.
+
+    add: Function from cart that adds a valid object to the cart. This function does not check if the object is correct, as the object will come from the database (within the program itself).
+
+    remove: Function from cart that removes an object from the cart if it exists.
