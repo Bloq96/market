@@ -28,6 +28,6 @@ test("Checks whether products are correctly added to the cart.", () => {
 	"price": 48
     });
     expect(testCart.getProducts()).toEqual([
-    {"name": "Book", "quantity": 2, "price": 48},
-    {"name": "Sewing Machine", "quantity": 3, "price": 59}]);
+    {"name": "Sewing Machine", "quantity": 3, "price": 59},
+    {"name": "Book", "quantity": 2, "price": 48}]);
 });
