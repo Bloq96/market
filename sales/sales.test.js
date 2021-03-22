@@ -1,13 +1,12 @@
 const sales = require("./sales");
 
 beforeAll(() => {
-    let testCart = CartFactory.create("Customer Name");
+    testCart = sales.CartFactory.create("Customer Name");
 });
 
 test("Checks whether the cart is being created properly.", () => {
-    expect(() => CartFactory.create(2)).toThrow(TypeError);
-    expect(CartFactory.create("My Name")).toBe(sales.Cart);
+    expect(() => sales.CartFactory.create(2)).toThrow(TypeError);
     expect(testCart.getCustomerName()).toEqual("Customer Name");
     expect(testCart.getTotalCost()).toEqual(0);
-    expect(testCart.getProducts()).toEqual({});
+    expect(testCart.getProducts()).toEqual([]);
 });
