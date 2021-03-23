@@ -25,7 +25,7 @@ Storage functions:
     update: Operation that will attempt to update the data in the database. It can call different functions depending on what will be updated.
 
 Cart Factory class:
-    Implements a factory for creating carts.
+    Implements a factory for creating and destroying carts.
 
 Cart class:
     Temporary structure that stores the name of a customer, the items he/she wants and the total cost of those items.
@@ -37,3 +37,6 @@ Sales functions:
     add: Function from cart that adds a valid object to the cart. This function does not check if the object is correct, as the object will come from the database (within the program itself).
 
     remove: Function from cart that removes an object from the cart if it exists.
+
+    crack: Function of the cart factory that deletes a cart and returns the total cost of the products stored in it.
+
