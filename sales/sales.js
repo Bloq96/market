@@ -1,30 +1,39 @@
 class Cart {
     constructor(customer) {
-	if(customer != undefined && typeof customer == "string") {
+	    if(customer != undefined && typeof customer == "string") {
             let customerName = customer;
             let totalCost = 0;
-	    let products = [];
+	        let products = [];
             this.getCustomerName = () => customerName;
             this.getTotalCost = () => totalCost;
             this.getProducts = () => {
-		let copyOfProducts = [];
-		let copyOfProduct = {};
-		for(let product of products) {
-		    copyOfProduct = {};
-	            copyOfProduct.name = product.name;
-		    copyOfProduct.quantity = product.quantity;
-		    copyOfProduct.price = product.price;
+		        let copyOfProducts = [];
+		        let copyOfProduct = {};
+		        for(let product of products) {
+		            copyOfProduct = {};
+	                copyOfProduct.name = product.name;
+		            copyOfProduct.quantity = product.quantity;
+		            copyOfProduct.price = product.price;
                     copyOfProducts.push(copyOfProduct);
-		}
-		return copyOfProducts;
+		        }
+		        return copyOfProducts;
             }
-	    this.addToCost = (value) => {totalCost += value;}
+	        this.addToCost = (value) => {totalCost += value;}
             this.appendToProducts = (product) => {products.push(product);};
-	    this.removeFromProducts = (position) => {products.splice(position,1
-	    );};
-	} else {
-            throw new TypeError("The name of the customer must be a string.",
-            "/sales/sales.js");
+	        this.removeFromProducts = (position) => {products.splice(
+            position,1);};
+            this.delete = () => {
+                delete this.getCustomerName;
+                delete this.getTotalCost;
+                delete this.getProducts;
+                delete this.addToCost;
+                delete this.appendToProducts;
+                delete this.removeFromProducts;
+                delete this.delete;
+            }
+	    } else {
+            throw new TypeError("The name of the customer must be a " +
+            "string.","/sales/sales.js");
         }
     }
 }
@@ -33,11 +42,11 @@ Cart.prototype.add = function(product) {
     let products = this.getProducts();
     for(let it=0;it<products.length;++it) {
         if(product.name == products[it].name) {
-	    this.addToCost(-(products[it].quantity * products[it].price));
+	        this.addToCost(-(products[it].quantity * products[it].price));
             product.quantity += products[it].quantity;
             this.removeFromProducts(it);
-	    break;
-	}
+	         break;
+	    }
     }
     this.addToCost(product.quantity * product.price);
     this.appendToProducts(product);
@@ -46,13 +55,14 @@ Cart.prototype.add = function(product) {
 Cart.prototype.remove = function(product) {
     if(product != undefined && typeof product == "string") {
         let products = this.getProducts();
-	for(let it=0;it<products.length;++it) {
+	    for(let it=0;it<products.length;++it) {
             if(product == products[it].name) {
-                this.addToCost(-(products[it].quantity * products[it].price));
+                this.addToCost(-(products[it].quantity * products[it].price)
+                );
                 this.removeFromProducts(it);
                 break;
+	        }
 	    }
-	}
     } else {
         throw new TypeError("The name of the product must be a string.",
         "/sales/sales.js");
@@ -62,6 +72,16 @@ Cart.prototype.remove = function(product) {
 class CartFactory {
     static create(customer) {
 	return new Cart(customer);
+    }
+    static crack(cart) {
+        if(cart instanceof Cart) {
+            let cost = cart.getTotalCost();
+            cart.delete();
+	        return cost;
+	   } else {
+            throw new TypeError("Cart Factory can only handle carts.",
+	        "/sales/sales.js");
+	   }
     }
 }
 

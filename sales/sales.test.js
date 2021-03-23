@@ -14,18 +14,18 @@ test("Checks whether the cart is being created properly.", () => {
 test("Checks whether products are correctly added to the cart.", () => {
     testCart.add({
         "name": "book",
-	"quantity": 1,
-	"price": 63
+	    "quantity": 1,
+	    "price": 63
     });
     testCart.add({
         "name": "sewing Machine",
-	"quantity": 3,
+	    "quantity": 3,
         "price": 59
     });
     testCart.add({
         "name": "book",
-	"quantity": 1,
-	"price": 48
+	    "quantity": 1,
+	    "price": 48
     });
     testCart.add({
         "name": "charger",
@@ -54,5 +54,5 @@ test("Checks whether carts are correctly deleted and their total cost is " +
 "returned.", () => {
     expect(() => sales.CartFactory.crack(1)).toThrow(TypeError);
     expect(sales.CartFactory.crack(testCart)).toEqual(164);
-    expect(testCart).toBe(undefined);
+    expect(testCart).toEqual({});
 });
