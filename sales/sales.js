@@ -29,16 +29,34 @@ class Cart {
     }
 }
 
-Cart.prototype.add = function(item) {
+Cart.prototype.add = function(product) {
     let products = this.getProducts();
     for(let it=0;it<products.length;++it) {
-        if(item.name == products[it].name) {
-            item.quantity += products[it].quantity;
+        if(product.name == products[it].name) {
+	    this.addToCost(-(products[it].quantity * products[it].price));
+            product.quantity += products[it].quantity;
             this.removeFromProducts(it);
 	    break;
 	}
     }
-    this.appendToProducts(item);
+    this.addToCost(product.quantity * product.price);
+    this.appendToProducts(product);
+}
+
+Cart.prototype.remove = function(product) {
+    if(product != undefined && typeof product == "string") {
+        let products = this.getProducts();
+	for(let it=0;it<products.length;++it) {
+            if(product == products[it].name) {
+                this.addToCost(-(products[it].quantity * products[it].price));
+                this.removeFromProducts(it);
+                break;
+	    }
+	}
+    } else {
+        throw new TypeError("The name of the product must be a string.",
+        "/sales/sales.js");
+    }
 }
 
 class CartFactory {
