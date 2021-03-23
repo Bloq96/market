@@ -13,21 +13,38 @@ test("Checks whether the cart is being created properly.", () => {
 
 test("Checks whether products are correctly added to the cart.", () => {
     testCart.add({
-        "name": "Book",
+        "name": "book",
 	"quantity": 1,
 	"price": 63
     });
     testCart.add({
-        "name": "Sewing Machine",
+        "name": "sewing Machine",
 	"quantity": 3,
         "price": 59
     });
     testCart.add({
-        "name": "Book",
+        "name": "book",
 	"quantity": 1,
 	"price": 48
     });
+    testCart.add({
+        "name": "charger",
+        "quantity": 1,
+        "price": 68
+    });
     expect(testCart.getProducts()).toEqual([
-    {"name": "Sewing Machine", "quantity": 3, "price": 59},
-    {"name": "Book", "quantity": 2, "price": 48}]);
+    {"name": "sewing Machine", "quantity": 3, "price": 59},
+    {"name": "book", "quantity": 2, "price": 48},
+    {"name": "charger", "quantity": 1, "price": 68}]);
+    expect(testCart.getTotalCost()).toEqual(341);
+});
+
+test("Checks whether products are correctly removed from the cart.", () => {
+    expect(() => testCart.remove(undefined)).toThrow(TypeError);
+    testCart.remove("soy sauce packet");
+    testCart.remove("sewing Machine");
+    expect(testCart.getProducts()).toEqual([
+    {"name": "book", "quantity": 2, "price": 48},
+    {"name": "charger", "quantity": 1, "price": 68}]);
+    expect(testCart.getTotalCost()).toEqual(164);
 });
