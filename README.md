@@ -1,6 +1,8 @@
 # market
 
-Obs.: In order to use the features of this project, install npm (npm install) and jest (npm install jest). To run the test suite, use "npm run test".
+Obs.: In order to use the features of this project, install npm (npm install) and jest (npm install jest). To run the test suite, use "npm run test". The expected output for this command is:
+
+![image](https://user-images.githubusercontent.com/52757387/112113362-7c7eba00-8b95-11eb-860a-8e46044c3591.png)
 
 This project was created with the objective of developing a simple sales and inventory management system in a marketing environment. It was developed using a test-driven design methodology.
 
