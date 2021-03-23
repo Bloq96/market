@@ -1,5 +1,7 @@
 # market
 
+Obs.: In order to use the features of this project, install npm (npm install) and jest (npm install jest). To run the test suite, use "npm run test".
+
 This project was created with the objective of developing a simple sales and inventory management system in a marketing environment. It was developed using a test-driven design methodology.
 
 The basic structure of the market system will be divided into two parts, both controlled by a user, representing the market owner, manager or seller:
@@ -40,3 +42,5 @@ Sales functions:
 
     crack: Function of the cart factory that deletes a cart and returns the total cost of the products stored in it.
 
+Future works:
+This project contains 8 unit tests for the sales and storage functionalities of the management system. In the future, more tests will be written to add new features and integrate the existing ones. In addition, storage functions will be enhanced to behave asynchronously.
