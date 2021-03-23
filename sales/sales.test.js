@@ -48,3 +48,11 @@ test("Checks whether products are correctly removed from the cart.", () => {
     {"name": "charger", "quantity": 1, "price": 68}]);
     expect(testCart.getTotalCost()).toEqual(164);
 });
+
+
+test("Checks whether carts are correctly deleted and their total cost is " +
+"returned.", () => {
+    expect(() => sales.CartFactory.crack(1)).toThrow(TypeError);
+    expect(sales.CartFactory.crack(testCart)).toEqual(164);
+    expect(testCart).toBe(undefined);
+});
